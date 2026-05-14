@@ -65,3 +65,7 @@ When the surrounding `Async` scope is cancelled, slussen calls `.cancel(true)` o
 ## What slussen does not do
 
 Slussen is intentionally minimal. For anything beyond the bridge — full command surface, cluster, sentinel, master/replica, transactions, Lua scripting, connection pooling, pattern subscribe — call Lettuce directly. The Lettuce docs are at https://redis.github.io/lettuce/.
+
+## License
+
+[GNU Affero General Public License v3.0 or later](./LICENSE) (AGPL-3.0-or-later).
