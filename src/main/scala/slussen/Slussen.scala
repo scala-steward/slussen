@@ -34,17 +34,23 @@ object Slussen:
     Resource(
       {
         val conn = c.connectPubSub(codec)
-        val ch   = UnboundedChannel[Message[K, V]]()
+        val ch = UnboundedChannel[Message[K, V]]()
         conn.addListener(ListenerAdapter(ch))
         conn.sync().subscribe(channels.toArray*)
         (conn, ch)
       },
-      { (pair: (io.lettuce.core.pubsub.StatefulRedisPubSubConnection[K, V], UnboundedChannel[Message[K, V]])) =>
+      (pair: (
+          io.lettuce.core.pubsub.StatefulRedisPubSubConnection[K, V],
+          UnboundedChannel[Message[K, V]]
+      )) =>
         try pair._1.sync().unsubscribe()
         finally pair._1.close()
-      }
-    ).map { (pair: (io.lettuce.core.pubsub.StatefulRedisPubSubConnection[K, V], UnboundedChannel[Message[K, V]])) =>
-      pair._2
+    ).map {
+      (pair: (
+          io.lettuce.core.pubsub.StatefulRedisPubSubConnection[K, V],
+          UnboundedChannel[Message[K, V]]
+      )) =>
+        pair._2
     }
 
 end Slussen

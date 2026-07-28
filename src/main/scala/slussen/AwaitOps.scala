@@ -17,4 +17,4 @@ extension [T](cs: CompletionStage[T])
 
 private def unwrapCompletion(t: Throwable): Throwable = t match
   case ce: CompletionException if ce.getCause != null => ce.getCause
-  case other                                          => other
+  case other => other

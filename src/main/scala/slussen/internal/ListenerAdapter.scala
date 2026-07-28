@@ -12,7 +12,7 @@ private[slussen] final class ListenerAdapter[K, V](
     ch.sendImmediately(Message(channel, body))
 
   override def message(pattern: K, channel: K, body: V): Unit = ()
-  override def subscribed(channel: K, count: Long): Unit       = ()
-  override def psubscribed(pattern: K, count: Long): Unit      = ()
-  override def unsubscribed(channel: K, count: Long): Unit     = ()
-  override def punsubscribed(pattern: K, count: Long): Unit    = ()
+  override def subscribed(channel: K, count: Long): Unit = ()
+  override def psubscribed(pattern: K, count: Long): Unit = ()
+  override def unsubscribed(channel: K, count: Long): Unit = ()
+  override def punsubscribed(pattern: K, count: Long): Unit = ()
